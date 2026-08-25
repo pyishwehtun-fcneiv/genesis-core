@@ -1,0 +1,25 @@
+project:
+  codename: "GENESIS"
+  version: "0.1.0"
+  tenant_id_default: "00000000-0000-0000-0000-000000000001"
+
+llm_providers_priority:
+  - groq
+  - cerebras
+  - openrouter
+  - mistral
+  - nvidia_nim
+  - huggingface
+
+quality_thresholds:
+  qc_judge_publish_min: 85
+  verifier_automerge_min: 90
+  token_ceiling_per_call: 4000
+
+storage_policy:
+  hot_retention_days: 90
+  archival_batch_min_rows: 50
+  archival_max_wait_days: 7
+
+pricing_currency: "USDT"
+stars_markup_factor: 1.43
