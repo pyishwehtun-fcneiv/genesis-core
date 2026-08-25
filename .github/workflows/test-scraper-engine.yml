@@ -1,0 +1,29 @@
+name: Test Scraper & Embedding Engine
+
+on:
+  workflow_dispatch:  # Manual trigger button in Actions tab
+
+jobs:
+  test-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Install Playwright Chromium browser
+        run: playwright install --with-deps chromium
+
+      - name: Run Scraper Test
+        run: python scripts/scraper.py "https://example.com"
+
+      - name: Run Embedding Test
+        run: python scripts/embedder.py "This is a test sentence for GENESIS."
